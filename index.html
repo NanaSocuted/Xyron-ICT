@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Antonio Spurs & Legends</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?
+family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Reset & Dynamic Theme Variables */
+        :root {
+            --spurs-black: #0b0c10;
+            --spurs-dark-gray: #1f2833;
+            --spurs-medium-gray: #2d3748;
+            --spurs-silver: #c4ced4;
+            --spurs-light-silver: #e2e8f0;
+            --spurs-white: #ffffff;
+            --spurs-accent: #00e676;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-glow: 0 0 15px rgba(196, 206, 212, 0.4);
+            --radius-sm: 8px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #eef2f5 0%, #e2e8f0 100%);
+            color: #2d3748;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* General Link Styling */
+        a {
+            color: #1a365d;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: all 0.25s ease;
+        }
+
+        a:hover {
+            color: #000;
+            border-bottom-color: var(--spurs-silver);
+        }
+
+        /* Header & Brand Identity */
+        header {
+            background: linear-gradient(180deg, var(--spurs-black) 0%, var(--spurs-dark-gray) 100%);
+            color: var(--spurs-white);
+            padding: 3rem 1rem 2rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--spurs-silver);
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 30%, var(--spurs-silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            color: var(--spurs-silver);
+            margin-top: 0.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        header p {
+            color: #a0aec0;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(11, 12, 16, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 0.5rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav button {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--spurs-silver);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        nav button:hover, nav button.active {
+            color: var(--spurs-white);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(196, 206, 212, 0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transform: translateY(-1px);
+        }
+
+        nav button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 15%;
+            width: 70%;
+            height: 3px;
+            background: var(--spurs-silver);
+            border-radius: 2px;
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Highlighted Fan Club Nav Button */
+        nav button.nav-highlight {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: #ffffff;
+            border: 1px solid var(--spurs-silver);
+            box-shadow: var(--shadow-glow);
+        }
+
+        nav button.nav-highlight:hover, nav button.nav-highlight.active {
+            background: var(--spurs-silver);
+            color: var(--spurs-black);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            border-color: #ffffff;
+        }
+
+        .nav-badge {
+            background: var(--spurs-accent);
+            color: #000;
+            font-size: 0.65rem;
+            padding: 2px 7px;
+            border-radius: 20px;
+            margin-left: 6px;
+            vertical-align: middle;
+            font-weight: 900;
+            animation: pulse 1.8s infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0, 230, 118, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+        }
+
+        /* Container & Page Router Transitions */
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 2.5rem auto;
+            padding: 0 1.25rem;
+            flex: 1;
+        }
+
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .page.active-page {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card Elements */
+        .card {
+            background: var(--spurs-white);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-top: 5px solid var(--spurs-black);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card h2 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1.25rem;
+            color: var(--spurs-black);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Featured Fan Card */
+        .card.featured-fan-card {
+            border-top: 6px solid var(--spurs-silver);
+            background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+            border-left: 1px solid var(--spurs-silver);
+            border-right: 1px solid var(--spurs-silver);
+            border-bottom: 1px solid var(--spurs-silver);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .perks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        .perk-item {
+            background: #ffffff;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--spurs-light-silver);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .perk-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--spurs-silver);
+        }
+
+        .perk-item h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--spurs-black);
+            margin-bottom: 0.4rem;
+            font-size: 1.1rem;
+        }
+
+        /* Hero Banner & Player Frame */
+        .hero-image-container {
+            width: 100%;
+            max-height: 420px;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 3px solid var(--spurs-white);
+            position: relative;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image-container:hover img {
+            transform: scale(1.03);
+        }
+
+        .player-frame {
+            width: fit-content;
+            margin: 0 auto 2rem auto;
+            padding: 14px;
+            background: linear-gradient(145deg, #2d3748, #0b0c10);
+            border: 3px solid var(--spurs-silver);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .player-frame:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .player-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: var(--radius-sm);
+            display: block;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Stats Grid Layout */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.25rem;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(145deg, #ffffff, #f7fafc);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--spurs-light-silver);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            background: var(--spurs-black);
+            color: var(--spurs-white);
+            transform: translateY(-3px);
+        }
+
+        .stat-box:hover h3 {
+            color: var(--spurs-silver);
+        }
+
+        .stat-box h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--spurs-black);
+            line-height: 1.2;
+            transition: color 0.3s ease;
+        }
+
+        .stat-box p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        /* Modular Grid Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Media Section */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .media-card {
+            background: #f8fafc;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--spurs-light-silver);
+            text-align: center;
+        }
+
+        .media-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        audio, video {
+            width: 100%;
+            border-radius: var(--radius-sm);
+            outline: none;
+        }
+
+        video {
+            max-height: 220px;
+            background-color: var(--spurs-black);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Table Design */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 1rem;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .spurs-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 0.95rem;
+            background: var(--spurs-white);
+        }
+
+        .spurs-table th, .spurs-table td {
+            padding: 14px 18px;
+            border: 1px solid var(--spurs-light-silver);
+        }
+
+        .spurs-table th {
+            background-color: var(--spurs-black);
+            color: var(--spurs-white);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+        }
+
+        .spurs-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .spurs-table tr:hover {
+            background-color: #edf2f7;
+        }
+
+        .table-notes {
+            margin-top: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .table-notes li {
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        /* Sleek Modern Form Controls */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            color: var(--spurs-dark-gray);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="number"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--spurs-light-silver);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-family: inherit;
+            background-color: #f8fafc;
+            transition: all 0.25s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--spurs-black);
+            background-color: var(--spurs-white);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(180deg, var(--spurs-dark-gray) 0%, var(--spurs-black) 100%);
+            color: var(--spurs-white);
+            border: none;
+            padding: 14px 28px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .submit-btn:hover {
+            background: var(--spurs-black);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--spurs-black);
+            color: var(--spurs-silver);
+            margin-top: auto;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-top: 3px solid var(--spurs-silver);
+        }
+
+        footer a {
+            color: var(--spurs-white);
+        }
+
+        /* Custom Highlight/Mark Tag styling */
+        mark {
+            background-color: rgba(196, 206, 212, 0.3);
+            color: inherit;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>San Antonio Spurs</h1>
+        <h2>Top 5 Greatest Players</h2>
+        <p>Go Spurs Go! 5-Time NBA Champions</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <button class="nav-btn active" onclick="showPage('home', this)">Home Hub</button>
+        <button class="nav-btn" onclick="showPage('duncan', this)">Tim Duncan</button>
+        <button class="nav-btn" onclick="showPage('robinson', this)">David Robinson</button>
+        <button class="nav-btn" onclick="showPage('ginobili', this)">Manu Ginobili</button>
+        <button class="nav-btn" onclick="showPage('parker', this)">Tony Parker</button>
+        <button class="nav-btn" onclick="showPage('gervin', this)">George Gervin</button>
+        <button class="nav-btn nav-highlight" onclick="showPage('fanclub', this)">
+            Fan Club <span class="nav-badge">NEW</span>
+        </button>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- PAGE 1: HOME HUB -->
+        <div id="home" class="page active-page">
+            <div class="hero-image-container">
+                <a href="https://www.nba.com/spurs" target="_blank" rel="noopener noreferrer" title="Visit Official Spurs Website">
+                    <img src="Spurs.jpg" alt="San Antonio Spurs Banner" 
+                         onerror="this.src='https://via.placeholder.com/1000x400?text=San+Antonio+Spurs+Header'">
+                </a>
+            </div>
+
+            <div class="card">
+                <h2>Spurs Media Center</h2>
+                <div class="media-grid">
+                    <div class="media-card">
+                        <h3>Team Audio / Track</h3>
+                        <audio controls>
+                            <source src="sigmamusicart-football-football-music-551346.ogg" type="audio/ogg">
+                            <source src="sigmamusicart-football-football-music-551346.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="media-card">
+                        <h3>Highlights & Clips</h3>
+                        <video controls poster="images/spurs-banner.jpg">
+                            <source src="San Antonio Spurs BIG 3 Top 10 Plays - House Of Hoops (360p, h264).mp4" type="video/mp4">
+                            Your browser does not support video.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h2>Franchise Overview</h2>
+                    <p>
+                        <mark>Founded in 1967 as the <a href="https://en.wikipedia.org/wiki/Dallas_Chaparrals" target="_blank" rel="noopener 
+noreferrer">Dallas Chaparrals</a></mark>, the team moved to San Antonio in 1973. Renowned for consistent dominance, selflessness, 
+and international drafting, the Spurs stand among the most respected franchises in modern sports.
+                    </p>
+                    <br>
+                    <p><mark><b>P<sub>FOUL</sub></b></mark> Player foul tracker often paired with sub notes when foul trouble forces a 
+rotation.</p>
+                </div>
+                <div class="card">
+                    <h2>Championship Years</h2>
+                    <p><strong>1999:</strong> vs. New York Knicks</p>
+                    <p><strong>2003:</strong> vs. New Jersey Nets</p>
+                    <p><strong>2005:</strong> vs. Detroit Pistons</p>
+                    <p><strong>2007:</strong> vs. Cleveland Cavaliers</p>
+                    <p><strong>2014:</strong> vs. Miami Heat</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Franchise Legends Statistics</h2>
+                <div class="table-responsive">
+                    <table class="spurs-table">
+                        <thead>
+                            <tr>
+                                <th>Player</th>
+                                <th>Jersey #</th>
+                                <th>Position</th>
+                                <th>Games Played</th>
+                                <th>Titles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://www.hoophall.com/hall-of-famers/tim-duncan/" target="_blank">Tim Duncan</a></td>
+                                <td>#21</td>
+                                <td>Power Forward / Center</td>
+                                <td>1,392</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.hoophall.com/hall-of-famers/david-robinson/" target="_blank">David Robinson</a></td>
+                                <td>#50</td>
+                                <td>Center</td>
+                                <td>987</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.hoophall.com/hall-of-famers/manu-ginobili/" target="_blank">Manu Ginobili</a></td>
+                                <td>#20</td>
+                                <td>Shooting Guard</td>
+                                <td>1,057</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.hoophall.com/hall-of-famers/tony-parker/" target="_blank">Tony Parker</a></td>
+                                <td>#9</td>
+                                <td>Point Guard</td>
+                                <td>1,254</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.hoophall.com/hall-of-famers/george-gervin/" target="_blank">George Gervin</a></td>
+                                <td>#44</td>
+                                <td>Shooting Guard</td>
+                                <td>899</td>
+                                <td>0 (4x Scoring Champ)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <ul class="table-notes">
+                    <li>All stats represent official regular season franchise games with the San Antonio Spurs.</li>
+                    <li>Tim Duncan, David Robinson, Manu Ginobili, and Tony Parker all have their jersey numbers retired.</li>
+                    <li>The "Big Three" (Duncan, Ginobili, Parker) won 575 regular season games together, an NBA record.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PAGE 2: TIM DUNCAN -->
+        <div id="duncan" class="page">
+            <div class="player-frame">
+                <a href="https://www.hoophall.com/hall-of-famers/tim-duncan/" target="_blank" rel="noopener noreferrer">
+                    <img src="Tim Duncan.jpg" alt="Tim Duncan" class="player-
+image" width="300" height="400">
+                </a>
+            </div>
+
+            <div class="card">
+                <h2>1<sup>st</sup> Tim Duncan #21</h2>
+                <p><em><strong>"The Big Fundamental"</strong></em></p>
+                <br>
+                <p>Drafted #1 overall in 1997, Tim Duncan spent his entire 19-year NBA career with San Antonio, establishing himself as the 
+greatest power forward in basketball history and the steady anchor of all five championship teams.</p>
+                
+                <div class="stat-grid">
+                    <div class="stat-box"><h3>5</h3><p>NBA Titles</p></div>
+                    <div class="stat-box"><h3>2</h3><p>NBA MVPs</p></div>
+                    <div class="stat-box"><h3>3</h3><p>Finals MVPs</p></div>
+                    <div class="stat-box"><h3>15x</h3><p>All-Star</p></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Highlights & Achievements</h2>
+                <ul>
+                    <li>19.0 Points, 10.8 Rebounds, and 2.2 Blocks per game career averages.</li>
+                    <li>15-time All-NBA selection and 15-time All-Defensive selection.</li>
+                    <li>Inducted into the <a href="https://www.hoophall.com/" target="_blank">Basketball Hall of Fame</a> (Class of 2020).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PAGE 3: DAVID ROBINSON -->
+        <div id="robinson" class="page">
+            <div class="player-frame">
+                <a href="https://www.hoophall.com/hall-of-famers/david-robinson/" target="_blank" rel="noopener noreferrer">
+                    <img src="David Robinson.jpg" alt="David Robinson" 
+class="player-image" width="300" height="400">
+                </a>
+            </div>
+
+            <div class="card">
+                <h2>2<sup>nd</sup> David Robinson #50</h2>
+                <p><em><strong>"The Admiral"</strong></em></p>
+                <br>
+                <p>After serving two years in the U.S. Navy, David Robinson joined the Spurs in 1989 and immediately revitalized the franchise. 
+Known for elite athleticism, defense, and leadership, he teamed with Tim Duncan to form the famous "Twin Towers".</p>
+                
+                <div class="stat-grid">
+                    <div class="stat-box"><h3>2</h3><p>NBA Titles</p></div>
+                    <div class="stat-box"><h3>1995</h3><p>NBA MVP</p></div>
+                    <div class="stat-box"><h3>1992</h3><p>DPOY</p></div>
+                    <div class="stat-box"><h3>10x</h3><p>All-Star</p></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Highlights & Achievements</h2>
+                <ul>
+                    <li>21.1 Points, 10.6 Rebounds, and 3.0 Blocks per game career averages.</li>
+                    <li>Recorded a legendary Quadruple-Double on February 17, 1994.</li>
+                    <li>Scored 71 points in a single game on the final day of the 1993-94 season.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PAGE 4: MANU GINOBILI -->
+        <div id="ginobili" class="page">
+            <div class="player-frame">
+                <a href="https://www.hoophall.com/hall-of-famers/manu-ginobili/" target="_blank" rel="noopener noreferrer">
+                    <img src="Manu Ginobili.jpg" alt="Manu Ginobili" 
+class="player-image" width="300" height="400">
+                </a>
+            </div>
+
+            <div class="card">
+                <h2>3<sup>rd</sup> Manu Ginobili #20</h2>
+                <p><em><strong>"The Eurostep Maestro"</strong></em></p>
+                <br>
+                <p>Drafted 57th overall in 1999, Manu Ginobili became one of the most electric and clutch players in league history. Embracing a 
+role off the bench, his fearlessness was vital to four championship runs.</p>
+                
+                <div class="stat-grid">
+                    <div class="stat-box"><h3>4</h3><p>NBA Titles</p></div>
+                    <div class="stat-box"><h3>2008</h3><p>6th Man of Year</p></div>
+                    <div class="stat-box"><h3>2x</h3><p>All-Star</p></div>
+                    <div class="stat-box"><h3>2004</h3><p>Olympic Gold</p></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Highlights & Achievements</h2>
+                <ul>
+                    <li>Popularized the iconic "Eurostep" move across North America.</li>
+                    <li>Played over 1,000 career regular season games with the Spurs.</li>
+                    <li>Inducted into the Basketball Hall of Fame in 2022.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PAGE 5: TONY PARKER -->
+        <div id="parker" class="page">
+            <div class="player-frame">
+                <a href="https://www.hoophall.com/hall-of-famers/tony-parker/" target="_blank" rel="noopener noreferrer">
+                    <img src="Tony Parker.jpg" alt="Tony Parker" class="player-
+image" width="300" height="400">
+                </a>
+            </div>
+
+            <div class="card">
+                <h2>4<sup>th</sup> Tony Parker #9</h2>
+                <p><em><strong>"The French Speedster"</strong></em></p>
+                <br>
+                <p>Arriving from France as a 19-year-old rookie in 2001, Tony Parker took over the point guard duties for Gregg Popovich's offense. 
+His speed and teardrop floater made him nearly unstoppable in the paint.</p>
+                
+                <div class="stat-grid">
+                    <div class="stat-box"><h3>4</h3><p>NBA Titles</p></div>
+                    <div class="stat-box"><h3>2007</h3><p>Finals MVP</p></div>
+                    <div class="stat-box"><h3>6x</h3><p>All-Star</p></div>
+                    <div class="stat-box"><h3>6,829</h3><p>Spurs Assists</p></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Highlights & Achievements</h2>
+                <ul>
+                    <li>First European-born player to win NBA Finals MVP (2007).</li>
+                    <li>All-time franchise leader in total assists for the San Antonio Spurs.</li>
+                    <li>Inducted into the Basketball Hall of Fame in 2023.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PAGE 6: GEORGE GERVIN -->
+        <div id="gervin" class="page">
+            <div class="player-frame">
+                <a href="https://www.hoophall.com/hall-of-famers/george-gervin/" target="_blank" rel="noopener noreferrer">
+                    <img src="George Gervin.jpg" alt="George Gervin" 
+class="player-image" width="300" height="400">
+                </a>
+            </div>
+
+            <div class="card">
+                <h2>5<sup>th</sup> George Gervin #44</h2>
+                <p><em><strong>"The Iceman"</strong></em></p>
+                <br>
+                <p>George "The Iceman" Gervin was one of the purest scorers basketball has ever seen. Playing for San Antonio across both the 
+ABA and NBA eras, his effortless finger roll defined basketball in the 1970s and 1980s.</p>
+                
+                <div class="stat-grid">
+                    <div class="stat-box"><h3>4</h3><p>Scoring Titles</p></div>
+                    <div class="stat-box"><h3>27.3</h3><p>Spurs PPG Avg</p></div>
+                    <div class="stat-box"><h3>9x</h3><p>NBA All-Star</p></div>
+                    <div class="stat-box"><h3>75th</h3><p>Anniversary Team</p></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Highlights & Achievements</h2>
+                <ul>
+                    <li>Won 4 NBA scoring titles in a 5-year span (1978–1982).</li>
+                    <li>Scored 33 points in a single quarter against New Orleans in 1978.</li>
+                    <li>Inducted into the Basketball Hall of Fame in 1996.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PAGE 7: FAN CLUB REGISTRATION -->
+        <div id="fanclub" class="page">
+            <div class="hero-image-container">
+                <a href="https://www.nba.com/spurs/fans" target="_blank" rel="noopener noreferrer">
+                    <img src="images/fanclub-banner.jpg" alt="Spurs Fan Club" 
+                         onerror="this.src='https://via.placeholder.com/1000x400?text=Join+Spurs+Nation+Fan+Club'">
+                </a>
+            </div>
+
+            <div class="card featured-fan-card">
+                <h2>Exclusive Member Perks</h2>
+                <p>Join the official Spurs Nation Fan Club today to unlock these exclusive benefits:</p>
+                <div class="perks-grid">
+                    <div class="perk-item">
+                        <h4>Welcome Kit</h4>
+                        <p>Free Spurs digital fan kit & exclusive sticker pack.</p>
+                    </div>
+                    <div class="perk-item">
+                        <h4>Ticket Access</h4>
+                        <p>Early presale codes for regular season home games.</p>
+                    </div>
+                    <div class="perk-item">
+                        <h4>Merch Discount</h4>
+                        <p>15% off official gear at the Spurs Team Shop.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+<html>
+<head>
+<style>
+h2 {
+  text-shadow: 2px 2px gray;
+}
+</style>
+</head>
+<body>
+
+<h2>Join Spurs Nation Fan Club</h2>
+
+</body>
+</html>
+                <p style="margin-bottom: 1.5rem;">Register now to get official game updates, exclusive merchandise drops, and ticket presale 
+codes!</p>
+                
+                <form action="#" method="post" onsubmit="event.preventDefault(); alert('Welcome to Spurs Nation! Your application has been 
+submitted successfully.');">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fannumber">Favorite Jersey Number</label>
+                        <input type="number" id="fannumber" name="fannumber" min="0" max="99" placeholder="21">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="favorite_legend">Favorite Spurs Legend</label>
+                        <select id="favorite_legend" name="favorite_legend">
+                            <option value="duncan">Tim Duncan</option>
+                            <option value="robinson">David Robinson</option>
+                            <option value="ginobili">Manu Ginobili</option>
+                            <option value="parker">Tony Parker</option>
+                            <option value="gervin">George Gervin</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments">Why are you a Spurs fan?</label>
+                        <textarea id="comments" name="comments" rows="3" placeholder="Share your favorite memory..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Register Now</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>TOP 5 GREATEST PLAYERS IN <a href="https://www.nba.com/spurs" target="_blank">SAN ANTONIO SPURS</a> HISTORY</p>
+    </footer>
+
+    <!-- JavaScript Router Logic -->
+    <script>
+        function showPage(pageId, element) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active-page');
+            });
+
+            document.querySelectorAll('nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(pageId).classList.add('active-page');
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
